@@ -7,15 +7,13 @@ import (
 )
 
 func BenchmarkMarshal(b *testing.B) {
-	b.ReportAllocs()
-	for n := 0; n < b.N; n++ {
+	namedBench(b, "IncSW/go-bencode", func() {
 		bencode.Marshal(marshalTestData)
-	}
+	})
 }
 
 func BenchmarkUnmarshal(b *testing.B) {
-	b.ReportAllocs()
-	for n := 0; n < b.N; n++ {
+	namedBench(b, "IncSW/go-bencode", func() {
 		bencode.Unmarshal(unmarshalTestData)
-	}
+	})
 }

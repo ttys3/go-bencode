@@ -8,15 +8,13 @@ import (
 )
 
 func BenchmarkMarksammanBencodeMarshal(b *testing.B) {
-	b.ReportAllocs()
-	for n := 0; n < b.N; n++ {
+	namedBench(b, "marksamman/bencode", func() {
 		bencode.Encode(marshalTestData)
-	}
+	})
 }
 
 func BenchmarkMarksammanBencodeUnmarshal(b *testing.B) {
-	b.ReportAllocs()
-	for n := 0; n < b.N; n++ {
+	namedBench(b, "marksamman/bencode", func() {
 		bencode.Decode(bytes.NewReader(unmarshalTestData))
-	}
+	})
 }

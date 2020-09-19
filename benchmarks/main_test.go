@@ -1,5 +1,19 @@
 package benchmarks
 
+import (
+	"fmt"
+	"testing"
+)
+
+var namedBench = func(b *testing.B, libName string, benchFunc func()) {
+	b.Run(fmt.Sprintf("library=%s", libName), func(b *testing.B) {
+		b.ReportAllocs() // this must put in b.Run()
+		for n := 0; n < b.N; n++ {
+			benchFunc()
+		}
+	})
+}
+
 var marshalTestData = map[string]interface{}{
 	"announce": []byte("udp://tracker.publicbt.com:80/announce"),
 	"announce-list": []interface{}{

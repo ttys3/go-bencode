@@ -25,6 +25,28 @@ data, err := bencode.Unmarshal(value)
 
 ## Performance
 
+### Go 1.15.2, Fedora 32, i7-8700K
+
+```bash
+goos: linux
+goarch: amd64
+pkg: benchmarks
+BenchmarkChihayaBencodeMarshal/library=chihaya/bencode-12         	  695912	      1748 ns/op	    1010 B/op	      53 allocs/op
+BenchmarkChihayaBencodeUnmarshal/library=chihaya/bencode-12       	  433002	      2772 ns/op	    5904 B/op	      61 allocs/op
+BenchmarkJackpalBencodeMarshal/library=jackpal/bencode-go-12      	  234519	      4455 ns/op	    2032 B/op	      45 allocs/op
+BenchmarkJackpalBencodeUnmarshal/library=jackpal/bencode-go-12    	  526748	      2554 ns/op	    1712 B/op	      59 allocs/op
+BenchmarkMarksammanBencodeMarshal/library=marksamman/bencode-12   	 1568473	       793 ns/op	     400 B/op	       8 allocs/op
+BenchmarkMarksammanBencodeUnmarshal/library=marksamman/bencode-12 	  418111	      2605 ns/op	    5792 B/op	      54 allocs/op
+BenchmarkNabilanamBencodeMarshal/library=nabilanam/bencode-12     	  593919	      2065 ns/op	    1216 B/op	      44 allocs/op
+BenchmarkNabilanamBencodeUnmarshal/library=nabilanam/bencode-12   	  978747	      1342 ns/op	    1264 B/op	      39 allocs/op
+BenchmarkMarshal/library=IncSW/go-bencode-12                      	 2682212	       453 ns/op	      16 B/op	       2 allocs/op
+BenchmarkUnmarshal/library=IncSW/go-bencode-12                    	  831754	      1364 ns/op	    1248 B/op	      25 allocs/op
+BenchmarkZeeboBencodeMarshal/library=nabilanam/bencode-12         	  270471	      4858 ns/op	    1392 B/op	      33 allocs/op
+BenchmarkZeeboBencodeUnmarshal/library=nabilanam/bencode-12       	  194533	      5967 ns/op	    6576 B/op	      99 allocs/op
+PASS
+ok  	benchmarks	16.971s
+```
+
 ### Go 1.13.1, Debian 9.1, i7-7700
 
 ### Marshal

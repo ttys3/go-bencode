@@ -9,17 +9,15 @@ import (
 )
 
 func BenchmarkNabilanamBencodeMarshal(b *testing.B) {
-	b.ReportAllocs()
-	for n := 0; n < b.N; n++ {
+	namedBench(b, "nabilanam/bencode", func() {
 		encoder.New(marshalTestData).Encode()
-	}
+	})
 }
 
 func BenchmarkNabilanamBencodeUnmarshal(b *testing.B) {
-	b.ReportAllocs()
-	for n := 0; n < b.N; n++ {
+	namedBench(b, "nabilanam/bencode", func() {
 		decoder.New(unmarshalTestData).Decode()
-	}
+	})
 }
 
 func TestNabilanamBencodeUnmarshal(t *testing.T) {

@@ -8,15 +8,13 @@ import (
 )
 
 func BenchmarkJackpalBencodeMarshal(b *testing.B) {
-	b.ReportAllocs()
-	for n := 0; n < b.N; n++ {
+	namedBench(b, "jackpal/bencode-go", func() {
 		bencode.Marshal(bytes.NewBuffer(nil), marshalTestData)
-	}
+	})
 }
 
 func BenchmarkJackpalBencodeUnmarshal(b *testing.B) {
-	b.ReportAllocs()
-	for n := 0; n < b.N; n++ {
+	namedBench(b, "jackpal/bencode-go", func() {
 		bencode.Decode(bytes.NewReader(unmarshalTestData))
-	}
+	})
 }

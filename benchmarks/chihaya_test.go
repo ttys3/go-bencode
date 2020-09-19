@@ -6,16 +6,15 @@ import (
 	bencode "github.com/chihaya/chihaya/frontend/http/bencode"
 )
 
+
 func BenchmarkChihayaBencodeMarshal(b *testing.B) {
-	b.ReportAllocs()
-	for n := 0; n < b.N; n++ {
+	namedBench(b, "chihaya/bencode", func() {
 		bencode.Marshal(marshalTestData)
-	}
+	})
 }
 
 func BenchmarkChihayaBencodeUnmarshal(b *testing.B) {
-	b.ReportAllocs()
-	for n := 0; n < b.N; n++ {
+	namedBench(b, "chihaya/bencode", func() {
 		bencode.Unmarshal(unmarshalTestData)
-	}
+	})
 }

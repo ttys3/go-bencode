@@ -7,16 +7,14 @@ import (
 )
 
 func BenchmarkZeeboBencodeMarshal(b *testing.B) {
-	b.ReportAllocs()
-	for n := 0; n < b.N; n++ {
+	namedBench(b, "zeebo/bencode", func() {
 		bencode.EncodeBytes(marshalTestData)
-	}
+	})
 }
 
 func BenchmarkZeeboBencodeUnmarshal(b *testing.B) {
-	b.ReportAllocs()
-	for n := 0; n < b.N; n++ {
+	namedBench(b, "zeebo/bencode", func() {
 		var torrent interface{}
 		bencode.DecodeBytes(unmarshalTestData, &torrent)
-	}
+	})
 }
